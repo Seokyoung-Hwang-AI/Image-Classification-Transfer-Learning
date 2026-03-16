@@ -5,7 +5,7 @@ This project explores the classification of sign language digits (0-9) using Dee
 ## 📖 Project Overview
 * **Goal**: Classify hand gestures representing digits 1-10.
 * **Framework**: TensorFlow 2.x, Keras, Matplotlib.
-* **Key Achievement**: Improved accuracy from **22% (Baseline)** to **66% (Transfer Learning)**, achieving a **3x performance boost**.
+* **Key Achievement**: Improved accuracy from **10% (Baseline)** to **67% (Transfer Learning)**, achieving a **6x performance boost**.
 
 ---
 
@@ -25,9 +25,9 @@ The following chart illustrates the training and validation performance of the V
 ![Training Results](./images/training_results.png)
 
 ### **Performance Breakdown**
-1. **Baseline CNN**: Achieved a modest **22% accuracy**. The simple architecture was insufficient for the complexity of sign language gestures.
+1. **Baseline CNN**: Achieved a modest **10% accuracy**. The simple architecture was insufficient for the complexity of sign language gestures.
 2. **Transfer Learning (VGG16)**: Transitioning to VGG16 with pre-trained ImageNet weights immediately boosted accuracy.
-3. **Fine-Tuning**: By unfreezing the final convolutional blocks and applying a low learning rate ($10^{-5}$), the model reached a final accuracy of **66%**.
+3. **Fine-Tuning**: By unfreezing the final convolutional blocks and applying a low learning rate ($10^{-5}$), the model reached a final accuracy of **67%**.
 
 ### **Technical Insights**
 * **Overcoming Data Scarcity**: With a limited dataset of ~1,000 images, Transfer Learning proved essential for effective feature extraction.
