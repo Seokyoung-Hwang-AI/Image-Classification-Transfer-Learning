@@ -1,6 +1,6 @@
 # Sign Language Digit Classification: From CNN to Transfer Learning
 
-This project explores the classification of sign language digits (0-9) using Deep Learning. It demonstrates the evolutionary process of model performance, comparing a baseline CNN built from scratch with a Transfer Learning approach using VGG16.
+This project explores the classification of sign language digits (0-9) using Deep Learning. It demonstrates the evolutionary process of model performance, comparing a baseline CNN built from scratch with a Transfer Learning approach using VGG16. This project was developed as **a mid-term project for the Department of AI at Korea National Open University (KNOU) in April 2025.**
 
 ## 📖 Project Overview
 * **Goal**: Classify hand gestures representing digits 1-10.
@@ -25,9 +25,9 @@ The following chart illustrates the training and validation performance of the V
 ![Training Results](./images/training_results.png)
 
 ### **Performance Breakdown**
-1. **Baseline CNN**: Achieved a modest **10% accuracy**. The simple architecture was insufficient for the complexity of sign language gestures.
-2. **Transfer Learning (VGG16)**: Transitioning to VGG16 with pre-trained ImageNet weights immediately boosted accuracy.
-3. **Fine-Tuning**: By unfreezing the final convolutional blocks and applying a low learning rate ($10^{-5}$), the model reached a final accuracy of **67%**.
+* **Baseline CNN**: Achieved a modest **10% accuracy**. The simple architecture was insufficient for the complexity of sign language gestures.
+* **Transfer Learning (VGG16)**: Transitioning to VGG16 with pre-trained ImageNet weights immediately boosted accuracy.
+* **Fine-Tuning**: By unfreezing the final convolutional blocks and applying a low learning rate ($10^{-5}$), the model reached a final accuracy of **67%**.
 
 ### **Technical Insights**
 * **Overcoming Data Scarcity**: With a limited dataset of ~1,000 images, Transfer Learning proved essential for effective feature extraction.
@@ -35,7 +35,4 @@ The following chart illustrates the training and validation performance of the V
 * **Optimization**: Utilizing the **Adam optimizer** with a dynamic learning rate strategy ensured steady convergence during the fine-tuning phase.
 
 ---
-## 🎓 Project Background
-This project was developed as a mid-term assignment for the **Department of AI at Korea National Open University (KNOU)** in April 2025.
-
-*Acknowledgment: Technical documentation and code optimization for this project were supported by Google Gemini.*
+**Acknowledgment:** Technical documentation, English terminology refactoring, and code optimization for this project were supported by **Google Gemini**.
