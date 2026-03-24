@@ -1,38 +1,45 @@
 # Sign Language Digit Classification: From CNN to Transfer Learning
 
-This project explores the classification of sign language digits (0-9) using Deep Learning. It demonstrates the evolutionary process of model performance, comparing a baseline CNN built from scratch with a Transfer Learning approach using VGG16. This project was developed as **a mid-term project for the Department of AI at Korea National Open University (KNOU) in April 2025.**
+> **Project Goal:** To improve the accuracy of sign language digit recognition using VGG16 Transfer Learning.
+
+---
 
 ## 📖 Project Overview
-* **Goal**: Classify hand gestures representing digits 1-10.
-* **Framework**: TensorFlow 2.x, Keras, Matplotlib.
-* **Key Achievement**: Improved accuracy from **10% (Baseline)** to **67% (Transfer Learning)**, achieving a **6x performance boost**.
+
+This project develops a deep learning system for sign language digit classification to improve accessibility for the hearing impaired. By transitioning from a baseline CNN to a **VGG16-based Transfer Learning** architecture, I achieved a **6x performance increase**, raising classification accuracy from **10% to 67%**. This demonstrates a viable strategy for building reliable AI tools even with limited datasets (approx. 1,000 images).
 
 ---
 
-## 📂 Repository Structure
-* **[project_cnn/](./project_cnn/)**: Implementation of the custom CNN architecture (Baseline).
-* **[project_vgg16/](./project_vgg16/)**: Implementation of Transfer Learning and Fine-tuning using VGG16.
-* **[images/](./images/)**: Contains training logs and performance visualizations.
+## 🛠️ Tech Stack
+* **Language:** Python
+* **Machine Learning:** TensorFlow, Keras, VGG16(Transfer Learning)
+* **Libraries:** Scikit-learn, NumPy, Matplotlib
+---
 
-> **Note on Dataset**: The dataset used in this project is not included in this repository as it was provided for academic purposes (KNOU Coursework).
+## 📈 Model Analysis & Insights
+
+### **1️⃣ Two-Stage Training & Fine-Tuning Strategy**
+
+To achieve stable and high-performance learning, I implemented a two-stage training strategy:
+
+* **Phase 1 (Epoch 1-16): Feature Extraction**
+    * **Strategy:** Froze the VGG16 backbone to stabilize top-layer weights.
+    * **Result:** The best model weights were captured at **Epoch 11**.
+* **Phase 2 (Epoch 16-38): Fine-Tuning**
+    * **Strategy:** Unfroze the final convolutional blocks with a low learning rate ($10^{-5}$) for deep optimization.
+    * **Result:** The best model weights were captured at **Epoch 33**.
+
+*![Training Results](./images/training_results.png)*
+
+* **Final Selection:** The best-performing weights from **Epoch 33** were selected as the final model to ensure **maximum generalization**, reaching a final accuracy of **67%**.
+
+### **2️⃣ Technical Insights & Optimization**
+* **Handling Data Scarcity:** Beyond Transfer Learning, I applied **Data Augmentation** (rotation, translation, contrast) to artificially expand the 1,000-image dataset, which was crucial for model generalization.
+* **Overfitting Control:** Strategic use of **Global Average Pooling** and **Dropout** prevented the model from memorizing the limited training samples, ensuring stable validation performance.
+* **Optimization:** The **Adam Optimizer** with a dynamic learning rate allowed for steady convergence without destroying pre-trained features during the fine-tuning phase.
 
 ---
 
-## 📊 Training Results & Analysis
-
-The following chart illustrates the training and validation performance of the VGG16 Transfer Learning model. 
-
-![Training Results](./images/training_results.png)
-
-### **Performance Breakdown**
-* **Baseline CNN**: Achieved a modest **10% accuracy**. The simple architecture was insufficient for the complexity of sign language gestures.
-* **Transfer Learning (VGG16)**: Transitioning to VGG16 with pre-trained ImageNet weights immediately boosted accuracy.
-* **Fine-Tuning**: By unfreezing the final convolutional blocks and applying a low learning rate ($10^{-5}$), the model reached a final accuracy of **67%**.
-
-### **Technical Insights**
-* **Overcoming Data Scarcity**: With a limited dataset of ~1,000 images, Transfer Learning proved essential for effective feature extraction.
-* **Regularization**: Integration of **Global Average Pooling** and **Dropout (0.5)** was critical in managing overfitting and stabilizing the validation loss.
-* **Optimization**: Utilizing the **Adam optimizer** with a dynamic learning rate strategy ensured steady convergence during the fine-tuning phase.
-
----
-**Acknowledgment:** Technical documentation, English terminology refactoring, and code optimization for this project were supported by **Google Gemini**.
+* **Project Origin**: This project was developed as a mid-term project for the Department of AI at Korea National Open University (KNOU) in April 2025.
+* **Note on Dataset**: The dataset used in this project is not included in this repository as it was provided for academic purposes (KNOU Coursework).
+* **Acknowledgment:** Code optimization, English terminology refactoring, and Technical documentation for this project were supported by **Google Gemini**.
