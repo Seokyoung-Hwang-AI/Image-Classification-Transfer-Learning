@@ -49,7 +49,9 @@ The core differentiator of this project is the **interpretability** of the AI:
 *![Grad-CAM Visualization Example](./images/03_grad_cam_analysis.png)*
 > *Figure: Grad-CAM heatmap to analyze root causes of misclassifications.*
 
-* **Reliability Validation:** As shown below, the model correctly focuses on the unique morphology of the 'Crazing' defect, validating that it's not relying on background noise.
+* **Reliability Validation:** As shown below, the **live deployment result** demonstrates how the model correctly focuses on the unique morphology of the 'Crazing' defect, validating that it's not relying on background noise.
+*![Live Deployment Result with Grad-CAM](./images/04_app_result_crazing.png)*
+> *Figure: An interactive session of the developed Streamlit application, showcasing a perfect prediction (100.00% confidence) and a precisely localized Grad-CAM heatmap for a 'Crazing' defect.*
 
 ---
 
