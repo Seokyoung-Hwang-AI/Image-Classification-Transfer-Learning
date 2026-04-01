@@ -29,7 +29,7 @@ To achieve stable and high-performance learning, I implemented a two-stage train
     * **Strategy:** Unfroze the final convolutional blocks with a low learning rate ($10^{-5}$) for deep optimization.
     * **Result:** The best model weights were captured at **Epoch 33**.
 
-*![Training Results](./01_Sign_Language_Digits/images/training_results.png)*
+*![Training Results](/01_Sign_Language_Digits/images/training_results.png)*
 
 * **Final Selection:** The best-performing weights from **Epoch 33** were selected as the final model to ensure **maximum generalization**, reaching a final accuracy of **67%**.
 
