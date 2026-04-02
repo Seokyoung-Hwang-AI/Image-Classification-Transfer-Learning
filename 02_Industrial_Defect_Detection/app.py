@@ -15,7 +15,7 @@ MODEL_DIR = os.path.join(BASE_DIR, 'models')
 MODEL_PATH = os.path.join(MODEL_DIR, 'Defect_Detection_VGG16.keras')
 LABEL_PATH = os.path.join(MODEL_DIR, 'class_names.pkl')
 # Replace with your actual Google Drive file ID
-GOOGLE_DRIVE_ID = '12TT0U0YYVv8ZR9ynlPwTuFz-48msQAg5' 
+GOOGLE_DRIVE_ID = '1WsTobG4K-wkinbzQ9fP1Vy_5YImJb9rJ'
 
 # --- 2. Page Setup ---
 st.set_page_config(
