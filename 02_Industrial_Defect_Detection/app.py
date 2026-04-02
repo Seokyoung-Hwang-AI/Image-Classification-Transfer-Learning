@@ -46,7 +46,7 @@ def load_assets():
     if not os.path.exists(MODEL_PATH):
         with st.spinner("Downloading pre-trained model from Google Drive..."):
             url = f'https://drive.google.com/uc?id={'GOOGLE_DRIVE_ID'}'
-            gdown.download(url, MODEL_PATH, quiet=False)
+            gdown.download(url, MODEL_PATH, quiet=False, fuzzy=True)
 
     # Load Model
     model = tf.keras.models.load_model(
