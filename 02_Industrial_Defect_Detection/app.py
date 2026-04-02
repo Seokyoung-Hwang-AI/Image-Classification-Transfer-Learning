@@ -10,11 +10,12 @@ from tensorflow.keras.applications.vgg16 import preprocess_input
 
 # --- 1. Global Configurations ---
 # Configuration for model storage and Google Drive integration
-MODEL_DIR = 'models'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_DIR = os.path.join(BASE_DIR, 'models')
 MODEL_PATH = os.path.join(MODEL_DIR, 'Defect_Detection_VGG16.keras')
 LABEL_PATH = os.path.join(MODEL_DIR, 'class_names.pkl')
 # Replace with your actual Google Drive file ID
-GOOGLE_DRIVE_ID = 'YOUR_GOOGLE_DRIVE_FILE_ID_HERE' 
+GOOGLE_DRIVE_ID = '12TT0U0YYVv8ZR9ynlPwTuFz-48msQAg5' 
 
 # --- 2. Page Setup ---
 st.set_page_config(
@@ -44,7 +45,7 @@ def load_assets():
     # Automated download for Streamlit Cloud deployment
     if not os.path.exists(MODEL_PATH):
         with st.spinner("Downloading pre-trained model from Google Drive..."):
-            url = f'https://drive.google.com/uc?id={'12TT0U0YYVv8ZR9ynlPwTuFz-48msQAg5'}'
+            url = f'https://drive.google.com/uc?id={'GOOGLE_DRIVE_ID'}'
             gdown.download(url, MODEL_PATH, quiet=False)
 
     # Load Model
