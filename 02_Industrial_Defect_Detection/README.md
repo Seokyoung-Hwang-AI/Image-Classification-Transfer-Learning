@@ -40,7 +40,7 @@ The model was evaluated on a test set of 360 images across 6 defect classes. It 
 To validate the model's robustness, I generated a Confusion Matrix to analyze misclassifications.
 
 *![Confusion Matrix](../images/02_confusion_matrix.png)*
-> *Note: Minor confusion was observed between 'Rolled' and 'Scratches' due to similar linear textures, which provides a direction for further data augmentation strategies.*
+> Note: Minor confusion was observed : (Crazing, Inclusion) and (Pitted, Rolled)
 
 ### **3️⃣ Explainable AI (XAI): Grad-CAM Integration**
 The core differentiator of this project is the **interpretability** of the AI:
@@ -49,9 +49,9 @@ The core differentiator of this project is the **interpretability** of the AI:
 *![Grad-CAM Visualization Example](../images/03_grad_cam_analysis.png)*
 > *Figure: Grad-CAM heatmap to analyze root causes of misclassifications.*
 
-* **Reliability Validation:** As shown below, the **live deployment result** demonstrates how the model correctly focuses on the unique morphology of the 'Crazing' defect, validating that it's not relying on background noise.
-*![Live Deployment Result with Grad-CAM](../images/04_app_result_crazing.png)*
-> *Figure: An interactive session of the developed Streamlit application, showcasing a perfect prediction (100.00% confidence) and a precisely localized Grad-CAM heatmap for a 'Crazing' defect.*
+* **Reliability Validation:** As shown below, the **live deployment result** demonstrates how the model correctly focuses on the unique morphology of the 'Scratches' defect, validating that it's not relying on background noise.
+*![Live Deployment Result with Grad-CAM](../images/04_app_result_scratches.png)*
+> *Figure: An interactive session of the developed Streamlit application, showcasing a perfect prediction (99.91% confidence) and a precisely localized Grad-CAM heatmap for a 'scratches' defect.*
 
 ---
 
