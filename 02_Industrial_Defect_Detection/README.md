@@ -26,15 +26,15 @@ The model was evaluated on a test set of 360 images across 6 defect classes. It 
 
 | Defect Class | Precision | Recall | F1-Score | Support |
 | :--- | :---: | :---: | :---: | :---: |
-| **Crazing** | 1.00 | 1.00 | 1.00 | 52 |
+| **Crazing** | 1.00 | 0.98 | 0.99 | 52 |
 | **Inclusion** | 0.99 | 1.00 | 0.99 | 75 |
 | **Patches** | 1.00 | 1.00 | 1.00 | 57 |
 | **Pitted** | 1.00 | 0.98 | 0.99 | 58 |
-| **Rolled** | 0.97 | 1.00 | 0.98 | 62 |
-| **Scratches** | 1.00 | 0.96 | 0.98 | 56 |
+| **Rolled** | 0.98 | 1.00 | 0.99 | 62 |
+| **Scratches** | 1.00 | 1.00 | 1.00 | 56 |
 | **Accuracy** | | | **0.99** | **360** |
 
-* **Key Insight:** The model achieves a **1.00 F1-score** for 'Crazing' and 'Patches', indicating zero false positives and negatives for these critical defect types.
+* **Key Insight:** The model achieves a **1.00 F1-score** for 'Patches' and 'Scratches', indicating zero false positives and negatives for these critical defect types.
 
 ### **2️⃣ Error Analysis via Confusion Matrix**
 To validate the model's robustness, I generated a Confusion Matrix to analyze misclassifications.
