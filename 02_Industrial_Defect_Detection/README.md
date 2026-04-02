@@ -14,7 +14,7 @@ In smart manufacturing, identifying surface defects with high precision and tran
 * **Language:** Python
 * **Deep Learning:** TensorFlow, Keras, VGG16 (Transfer Learning)
 * **Explainable AI:** Grad-CAM (Visualizing Heatmaps)
-* **Deployment:** Streamlit (Web Application), gdown (Cloud Asset Management)
+* **Deployment:** Streamlit (Web Application), gdown (Large model management)
 * **Libraries:** NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn
 
 ---
