@@ -57,7 +57,7 @@ The model achieved near-perfect scores on the **NEU Surface Defect Database**, p
 ### **Explainable AI (Grad-CAM) & Live Deployment**
 By integrating Grad-CAM, the system provides visual evidence for its decisions, ensuring transparency in smart manufacturing.
 
-*![Live Deployment Result](./images/04_app_result_crazing.png)*
+*![Live Deployment Result](./images/04_app_result_scratches.png)*
 > *Figure: Streamlit interface showcasing 100% confidence and precise defect localization.*
 
 ---
