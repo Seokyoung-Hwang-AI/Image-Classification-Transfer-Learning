@@ -1,6 +1,7 @@
 # Computer Vision Portfolio: From Foundation to Industrial AI
 
 > **Repository Goal:** Showcasing the evolution of deep learning applications, moving from fundamental sign language recognition to a high-precision, explainable industrial defect inspection system.
+>> 🚀 **[Live Demo on Streamlit Cloud](https://sh-industrial-surface-defect-detection.streamlit.app/)**
 
 ---
 
