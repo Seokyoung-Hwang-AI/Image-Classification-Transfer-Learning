@@ -1,6 +1,7 @@
 # Industrial Surface Defect Detection: VGG16 with Explainable AI (XAI)
 
 > **Project Goal:** To build a high-reliability automated inspection system for steel surface defects using Transfer Learning and Grad-CAM visualization.
+>> 🚀 **[Live Demo on Streamlit Cloud](https://sh-industrial-surface-defect-detection.streamlit.app/)**
 
 ---
 
