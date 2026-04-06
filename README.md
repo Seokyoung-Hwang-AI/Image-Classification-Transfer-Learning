@@ -65,7 +65,7 @@ By integrating Grad-CAM, the system provides visual evidence for its decisions, 
 
 ## 💡 Key Learning & Insights
 * **Model Interpretability:** Implementing Grad-CAM taught me the importance of **"Explainable AI"** in industrial sectors.
-* **MLOps & Deployment:** Managing large `.keras` files via `gdown` and Streamlit Cloud provided hands-on experience in the end-to-end AI lifecycle.
+* **MLOps & Deployment:** Managing large `.keras` files via `Hugging Face` and Streamlit Cloud provided hands-on experience in the end-to-end AI lifecycle.
 * **Domain Adaptation:** Successfully adapted a **general-purpose** model (VGG16) to two completely **different domains**: human gestures and industrial steel surfaces.
 
 ---
