@@ -14,6 +14,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR = os.path.join(BASE_DIR, 'models')
 MODEL_PATH = os.path.join(MODEL_DIR, 'Defect_Detection_VGG16.keras')
 LABEL_PATH = os.path.join(MODEL_DIR, 'class_names.pkl')
+# Define path for sample images
+SAMPLE_DIR = os.path.join(BASE_DIR, 'samples')
 
 # Hugging Face Repository Information
 HF_REPO_ID = 'SeokyoungHwang/Industrial_Defect_Detection' 
@@ -118,30 +120,78 @@ def generate_gradcam(img_tensor, model):
     
     return heatmap
 
-# --- 5. User Interface (Sidebar & Upload) ---
+# --- 5. User Interface (Sidebar, Upload & 6-Class Samples) ---
+# Quick Test Section
+st.sidebar.subheader("🚀 Try Instant Demo (Select a Defect)")
+st.sidebar.info("Click a defect type to see the AI analysis in action.")
+
+# Defining the 6 specific defect classes from the NEU dataset
+SAMPLES = {
+    "Crazing": "crazing_sample.jpg",
+    "Inclusion": "inclusion_sample.jpg",
+    "Patches": "patches_sample.jpg",
+    "Pitted": "pitted_sample.jpg",
+    "Rolled": "rolled_sample.jpg",
+    "Scratches": "scratches_sample.jpg"
+}
+
+# Initialize session state for sample tracking
+if "sample_path" not in st.session_state:
+    st.session_state.sample_path = None
+
+# Create a 2-column layout for sample buttons to save space
+col1, col2 = st.sidebar.columns(2)
+for i, (label, filename) in enumerate(SAMPLES.items()):
+    with col1 if i % 2 == 0 else col2:
+        if st.button(label, use_container_width=True):
+            st.session_state.sample_path = os.path.join(SAMPLE_DIR, filename)
+
+# Manual Upload
+st.sidebar.markdown("---")
 st.sidebar.header("Operations")
 uploaded_file = st.sidebar.file_uploader("Upload Surface Specimen", type=["jpg", "jpeg", "png"])
 
+# Determine the active image (Priority: Upload > Sample)
+raw_image = None
 if uploaded_file:
-    # Image preprocessing for VGG16 model requirements
+    # If a user uploads a file, it takes the highest priority.
     raw_image = Image.open(uploaded_file).convert('RGB')
+    # Clear sample selection to ensure the uploaded file is the one being analyzed.
+    st.session_state.sample_path = None 
+elif st.session_state.sample_path:
+    # If no file is uploaded, use the sample image selected via buttons.
+    try:
+        raw_image = Image.open(st.session_state.sample_path).convert('RGB')
+    except Exception as e:
+        st.error(f"Error loading sample image: {e}")
+
+# --- 6. Inference & Results Visualization ---
+if raw_image:
+    # Image preprocessing
     display_img = raw_image.resize((200, 200))
     img_array = np.array(display_img).astype('float32')
     img_tensor = np.expand_dims(img_array, axis=0)
 
     # Perform inference
-    preds = model.predict(img_tensor)
-    pred_idx = np.argmax(preds[0])
-    confidence = preds[0][pred_idx]
+    with st.spinner("Analyzing surface..."):
+        preds = model.predict(img_tensor)
+        pred_idx = np.argmax(preds[0])
+        confidence = preds[0][pred_idx]
+        result_text = class_names[pred_idx].upper()
 
-    # --- 6. Results Visualization ---
     col1, col2 = st.columns(2)
 
     with col1:
         st.subheader("Diagnostic Report")
-        st.image(raw_image, caption="Uploaded Specimen", use_container_width=True)
-        st.metric(label="Predicted Classification", value=class_names[pred_idx].upper())
-        st.write(f"**Confidence Score:** {confidence:.2%}")
+        st.image(raw_image, caption="Inspected Specimen", use_container_width=True)
+        
+        # Since all 6 classes are defects, we use st.error for visibility
+        st.error(f"**Detected Defect:** {result_text}")
+        st.metric(label="Model Confidence", value=f"{confidence:.2%}")
+        
+        # Simple Logic: If confidence is low, add a cautionary note
+        if confidence < 0.70:
+            st.warning("⚠️ Low confidence detected. Manual inspection is recommended.")
 
     with col2:
         st.subheader("Decision Evidence (XAI)")
@@ -150,12 +200,13 @@ if uploaded_file:
             
             fig, ax = plt.subplots()
             ax.imshow(display_img)
-            # Overlay heatmap with transparency for better visualization
-            ax.imshow(heatmap, cmap='jet', alpha=0.4) 
+            # Overlaying the heatmap to show the 'Root Cause' area
+            ax.imshow(heatmap, cmap='jet', alpha=0.4)
             ax.axis('off')
             st.pyplot(fig)
             
-        st.caption("The colored regions highlight specific features (e.g., textures, cracks) that dictated the model's prediction.")
+        st.caption(f"The heatmap visualizes the specific features that the VGG16 model identified as '{result_text.lower()}'.")
 
 else:
-    st.info("System Ready. Please upload a surface image via the sidebar for inspection.")
+    # Initial landing state
+    st.info("System Ready. Please upload a surface image or select a sample defect from the gallery.")
