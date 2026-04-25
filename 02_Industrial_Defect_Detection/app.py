@@ -143,7 +143,7 @@ if "sample_path" not in st.session_state:
 col1, col2 = st.sidebar.columns(2)
 for i, (label, filename) in enumerate(SAMPLES.items()):
     with col1 if i % 2 == 0 else col2:
-        if st.button(label, use_container_width=True):
+        if st.button(label, width="stretch"):
             st.session_state.sample_path = os.path.join(SAMPLE_DIR, filename)
 
 # Manual Upload
@@ -183,7 +183,7 @@ if raw_image:
 
     with col1:
         st.subheader("Diagnostic Report")
-        st.image(raw_image, caption="Inspected Specimen", use_container_width=True)
+        st.image(raw_image, caption="Inspected Specimen", width="stretch")
         
         # Since all 6 classes are defects, we use st.error for visibility
         st.error(f"**Detected Defect:** {result_text}")
